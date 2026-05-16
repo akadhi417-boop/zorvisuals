@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": ".vercel/output",
-  "framework": null,
   "build": {
     "env": {
       "NITRO_PRESET": "vercel"
-    }
-  }
+    },
+    "outputDirectory": ".vercel/output"
+  },
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
