@@ -1,0 +1,119 @@
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@source "../src";
+
+@custom-variant dark (&:is(.dark *));
+
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-deep: var(--gold-deep);
+  --color-cream: var(--cream);
+  --color-charcoal: var(--charcoal);
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Brand palette */
+  --cream: oklch(0.972 0.025 90);          /* #FAF3E1 vibe */
+  --charcoal: oklch(0.235 0.005 270);      /* #222 */
+  --gold: oklch(0.745 0.115 80);           /* #C9A14A */
+  --gold-soft: oklch(0.86 0.075 85);
+  --gold-deep: oklch(0.62 0.115 75);
+  --gradient-gold: linear-gradient(135deg, oklch(0.78 0.12 82), oklch(0.65 0.13 70));
+  --shadow-gold: 0 20px 60px -25px color-mix(in oklab, var(--gold) 35%, transparent);
+
+  --background: var(--cream);
+  --foreground: var(--charcoal);
+  --card: oklch(0.985 0.015 92);
+  --card-foreground: var(--charcoal);
+  --popover: var(--cream);
+  --popover-foreground: var(--charcoal);
+  --primary: var(--gold);
+  --primary-foreground: oklch(0.99 0.01 90);
+  --secondary: oklch(0.94 0.025 88);
+  --secondary-foreground: var(--charcoal);
+  --muted: oklch(0.94 0.02 88);
+  --muted-foreground: oklch(0.45 0.015 80);
+  --accent: var(--gold-soft);
+  --accent-foreground: var(--charcoal);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.88 0.04 85);
+  --input: oklch(0.88 0.04 85);
+  --ring: var(--gold);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.01em; }
+  ::selection { background: var(--gold); color: var(--cream); }
+  html { scroll-behavior: smooth; }
+}
+
+@layer utilities {
+  .text-gold { color: var(--gold); }
+  .bg-gold { background-color: var(--gold); }
+  .gradient-gold-text {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .gold-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gradient-gold);
+    margin: 0 auto;
+  }
+  .tracking-luxury { letter-spacing: 0.35em; text-transform: uppercase; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  .animate-fade-up { animation: fade-up 0.9s ease-out both; }
+  .animate-fade-in { animation: fade-in 1.2s ease-out both; }
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.25s; }
+  .delay-300 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.6s; }
+}
