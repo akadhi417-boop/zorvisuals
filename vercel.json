@@ -1,14 +1,6 @@
 {
   "version": 2,
   "buildCommand": "npm run build",
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/dist/client/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.js"
-    }
-  ]
+  "outputDirectory": ".vercel/output",
+  "framework": null
 }

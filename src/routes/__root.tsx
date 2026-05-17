@@ -29,22 +29,31 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Zor Visuals — Crafting Timeless Visual Stories" },
+      { title: "ZOR VISUALS | Cinematic Videography & Creative Branding Studio" },
       {
         name: "description",
         content:
-          "Zor Visuals specializes in premium photography, videography, and brand shoots with a cinematic luxury aesthetic.",
+          "ZOR VISUALS is a premium creative studio specializing in cinematic videography, photography, branding, and digital visuals with modern luxury aesthetics.",
       },
-      { name: "author", content: "Zor Visuals" },
-      { property: "og:title", content: "Zor Visuals" },
+      { name: "keywords", content: "videography, photography, branding studio, cinematic visuals, creative agency, web design, digital branding, ZOR VISUALS" },
+      { name: "author", content: "ZOR VISUALS" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: "ZOR VISUALS | Cinematic Videography & Creative Branding Studio" },
       {
         property: "og:description",
-        content: "Crafting Timeless Visual Stories through Cinematic Photography & Videography.",
+        content: "ZOR VISUALS is a premium creative studio specializing in cinematic videography, photography, branding, and digital visuals with modern luxury aesthetics.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "ZOR VISUALS" },
+      { property: "og:url", content: "https://zorvisuals.com" },
+      { property: "og:image", content: "/assets/favicon.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "ZOR VISUALS | Cinematic Videography & Creative Branding Studio" },
+      { name: "twitter:description", content: "ZOR VISUALS is a premium creative studio specializing in cinematic videography, photography, branding, and digital visuals with modern luxury aesthetics." },
+      { name: "twitter:image", content: "/assets/favicon.png" },
     ],
     links: [
+      { rel: "canonical", href: "https://zorvisuals.com" },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: "/assets/favicon.png" },
       { rel: "shortcut icon", href: "/assets/favicon.ico" },
@@ -59,10 +68,45 @@ export const Route = createRootRoute({
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
+  const schemaOrgJSONLD = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CreativeWorkSeries",
+        "name": "ZOR VISUALS",
+        "description": "ZOR VISUALS is a premium creative studio specializing in cinematic videography, photography, branding, and digital visuals with modern luxury aesthetics."
+      },
+      {
+        "@type": "LocalBusiness",
+        "name": "ZOR VISUALS",
+        "image": "https://zorvisuals.com/assets/favicon.png",
+        "description": "ZOR VISUALS is a premium creative studio specializing in cinematic videography, photography, branding, and digital visuals with modern luxury aesthetics.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kerala",
+          "addressCountry": "IN"
+        },
+        "url": "https://zorvisuals.com"
+      },
+      {
+        "@type": "ProfessionalService",
+        "name": "ZOR VISUALS",
+        "url": "https://zorvisuals.com",
+        "sameAs": [
+          "https://www.instagram.com/zor.visuals"
+        ]
+      }
+    ]
+  };
+
   return (
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrgJSONLD) }}
+        />
       </head>
       <body>
         {children}
